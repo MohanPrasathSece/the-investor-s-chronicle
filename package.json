@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n \"vite,api\" -c \"cyan,yellow\" \"vite\" \"tsx api-dev-server.ts\"",
-    "api": "tsx api-dev-server.ts",
+    "dev": "concurrently -n \"vite,api\" -c \"cyan,yellow\" \"vite\" \"tsx --watch api-dev-server.ts\"",
+    "api": "tsx --watch api-dev-server.ts",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",

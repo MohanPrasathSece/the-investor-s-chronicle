@@ -127,7 +127,7 @@ const server = http.createServer(async (req, res) => {
       if ((!crmRes.ok || crmAppError) && !alreadyExists) {
         let errMsg = parsedBody?.error || responseText || "CRM rejected lead";
         if (errMsg.toLowerCase().includes("lead is not valid")) {
-          errMsg = "The phone number or email format appears to be incorrect. Please make sure your phone number has the correct number of digits and corresponds to the selected country code.";
+          errMsg = "Invalid phone number or email format. Please check the digits and selected country.";
         }
         console.warn(`[CRM] Lead rejected: ${errMsg}`);
         return json(res, 200, { success: false, error: errMsg });

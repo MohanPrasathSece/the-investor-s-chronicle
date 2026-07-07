@@ -79,7 +79,7 @@ const submitLeadToCRM = createServerFn({ method: "POST" })
       if ((!response.ok || crmAppError) && !alreadyExists) {
         let errMsg = parsedBody?.error || responseText || "CRM rejected lead";
         if (errMsg.toLowerCase().includes("lead is not valid")) {
-          errMsg = "The phone number or email format appears to be incorrect. Please make sure your phone number has the correct number of digits and corresponds to the selected country code.";
+          errMsg = "Invalid phone number or email format. Please check the digits and selected country.";
         }
         return { success: false, error: errMsg };
       }
@@ -230,7 +230,7 @@ function Enquiry() {
       } else {
         let errMsg = res.error || "Failed to submit lead. Please try again.";
         if (errMsg.toLowerCase().includes("lead is not valid")) {
-          errMsg = "The phone number or email format appears to be incorrect. Please make sure your phone number has the correct number of digits and corresponds to the selected country code.";
+          errMsg = "Invalid phone number or email format. Please check the digits and selected country.";
         }
         setServerError(errMsg);
       }

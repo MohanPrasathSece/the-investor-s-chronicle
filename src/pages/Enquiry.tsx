@@ -217,7 +217,7 @@ export default function Enquiry() {
         } else {
           let errMsg = data.error || "Failed to submit. Please try again.";
           if (errMsg.toLowerCase().includes("lead is not valid")) {
-            errMsg = "The phone number or email format appears to be incorrect. Please make sure your phone number has the correct number of digits and corresponds to the selected country code.";
+            errMsg = "Invalid phone number or email format. Please check the digits and selected country.";
           }
           setServerError(errMsg);
         }

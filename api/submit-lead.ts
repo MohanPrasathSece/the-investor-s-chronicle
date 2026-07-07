@@ -67,7 +67,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if ((!response.ok || crmAppError) && !alreadyExists) {
       let errMsg = parsedBody?.error || responseText || "CRM rejected lead";
       if (errMsg.toLowerCase().includes("lead is not valid")) {
-        errMsg = "The phone number or email format appears to be incorrect. Please make sure your phone number has the correct number of digits and corresponds to the selected country code.";
+        errMsg = "Invalid phone number or email format. Please check the digits and selected country.";
       }
       return res.status(200).json({ success: false, error: errMsg });
     }
