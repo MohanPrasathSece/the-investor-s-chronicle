@@ -6,7 +6,10 @@ import related4 from "@/assets/related-4.png";
 import recommended1 from "@/assets/recommended-1.png";
 import video1 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.37.mp4";
 import video2 from "@/assets/WhatsApp Video 2026-07-07 at 10.48.38.mp4";
+import { useState } from "react";
 import {
+  Menu,
+  X,
   Share2,
   Printer,
   ChevronRight,
@@ -17,6 +20,7 @@ import {
 const ENQUIRY = "/enquiry";
 
 export default function Index() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const trendingTags = [
     "Ukraine Drone Attack",
     "Bangladesh Bomb Blast",
@@ -65,10 +69,10 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-zinc-950 selection:text-white antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-zinc-955 selection:text-white antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Top Banner Bar */}
       <div className="border-b border-zinc-200 bg-white py-2 text-xs text-zinc-500 font-medium">
-        <div className="mx-auto max-w-7xl px-6 flex justify-between items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 border-r border-zinc-200 pr-3.5">
               <span>Edition</span>
@@ -76,16 +80,16 @@ export default function Index() {
                 🇺🇸 US <ChevronRight className="w-3 h-3 rotate-90" />
               </a>
             </div>
-            <div className="flex items-center gap-1.5 border-r border-zinc-200 pr-3.5">
+            <div className="flex items-center gap-1.5 md:border-r md:border-zinc-200 md:pr-3.5">
               <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-zinc-900 flex items-center gap-0.5">
                 <span>English</span>
                 <ChevronRight className="w-3 h-3 rotate-90 text-zinc-400" />
               </a>
             </div>
-            <div>
+            <div className="hidden md:block">
               Tue, Jul 07, 2026 | <span className="text-zinc-400">Updated 12.11PM IST</span>
             </div>
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:text-zinc-900">
                 <span>📍 Weather⛅</span>
               </a>
@@ -100,57 +104,78 @@ export default function Index() {
       </div>
 
       {/* Large Brand Header Logo */}
-      <div className="pt-12 pb-6 text-center border-b border-zinc-200">
-        <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="text-4xl sm:text-5xl font-extrabold tracking-tight text-zinc-950 uppercase cursor-pointer" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+      <div className="relative pt-6 pb-6 md:pt-12 md:pb-6 text-center border-b border-zinc-200 px-4 sm:px-6">
+        {/* Mobile Hamburger Menu Button */}
+        <div className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 flex items-center md:hidden">
+          <button 
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 text-zinc-800 focus:outline-none cursor-pointer transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
+
+        <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="inline-block text-2xl sm:text-4xl md:text-5xl lg:text-6.5xl font-extrabold tracking-tight text-zinc-955 uppercase cursor-pointer px-8 md:px-0" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
           The Investor's Chronicle
         </a>
       </div>
 
-      {/* Main Category Bar */}
-      <div className="border-b border-zinc-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-3 flex flex-col md:flex-row items-center justify-center gap-3">
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs md:text-[13.5px] font-bold text-zinc-700 uppercase tracking-wider">
-            <a href="/" className="text-zinc-900 font-black border-b-2 border-zinc-950 pb-0.5 cursor-pointer">Home</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">City</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Live</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">India</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">World</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Business</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Sports</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Cricket</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Entertainment</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Tech</a>
-            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950 cursor-pointer">Blogs</a>
+      {/* Main Category Bar - Centered & Horizontal Scrollable on Mobile */}
+      <div className="border-b border-zinc-200 bg-white sticky top-0 z-30 shadow-sm md:shadow-none">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2.5 md:py-3">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs md:text-[13.5px] font-bold text-zinc-700 uppercase tracking-wider">
+            <a href="/" className="text-zinc-900 font-black border-b-2 border-zinc-955 pb-0.5 cursor-pointer">Home</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">City</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Live</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">India</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">World</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Business</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Sports</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Cricket</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Entertainment</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Tech</a>
+            <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer">Blogs</a>
+          </nav>
+          {/* Mobile Swipeable Nav */}
+          <nav className="md:hidden flex items-center gap-4 text-[11px] font-bold text-zinc-700 uppercase tracking-wider overflow-x-auto scrollbar-none whitespace-nowrap -mx-4 px-4">
+            <a href="/" className="text-zinc-900 font-black border-b-2 border-zinc-955 pb-0.5 cursor-pointer shrink-0">Home</a>
+            {["City", "Live", "India", "World", "Business", "Sports", "Cricket", "Entertainment", "Tech", "Blogs"].map((cat) => (
+              <a key={cat} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 cursor-pointer shrink-0">{cat}</a>
+            ))}
           </nav>
         </div>
       </div>
 
-      {/* Sub-nav: In the News row */}
-      <div className="border-b border-zinc-200 bg-zinc-50/50 py-2 text-xs">
-        <div className="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-          <span className="font-bold text-rose-600 uppercase tracking-wider shrink-0">In The News</span>
-          {["AI Masterclass", "Money Masterclass", "Ask Apollo", "Parentology", "BTC Backtest", "Cyprus Sourcing", "MPC Custody"].map((item, idx) => (
-            <a key={idx} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-zinc-655 hover:text-zinc-900 cursor-pointer">
-              <span className="text-zinc-300">|</span>
-              {item}
-              {idx === 2 || idx === 4 ? <span className="text-[8px] bg-red-500 text-white px-1.5 py-0.5 rounded uppercase font-bold leading-none scale-90">New</span> : null}
-            </a>
-          ))}
+      {/* Sub-nav: In the News row (Horizontal Scrollable on Mobile) */}
+      <div className="border-b border-zinc-200 bg-zinc-50/50 py-2 text-xs overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center gap-x-4 overflow-x-auto scrollbar-none whitespace-nowrap -mx-4 px-4 sm:mx-0 sm:px-0">
+          <span className="font-bold text-rose-600 uppercase tracking-wider shrink-0 text-[10px] md:text-xs">In The News</span>
+          <div className="flex items-center gap-x-4">
+            {["AI Masterclass", "Money Masterclass", "Ask Apollo", "Parentology", "BTC Backtest", "Cyprus Sourcing", "MPC Custody"].map((item, idx) => (
+              <a key={idx} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-zinc-600 hover:text-zinc-900 cursor-pointer shrink-0">
+                <span className="text-zinc-300">|</span>
+                {item}
+                {idx === 2 || idx === 4 ? <span className="text-[8px] bg-red-500 text-white px-1.5 py-0.5 rounded uppercase font-bold leading-none scale-90">New</span> : null}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Trending Tags Row */}
-      <div className="border-b border-zinc-200 py-2 bg-white">
-        <div className="mx-auto max-w-7xl px-6 flex items-center justify-center gap-2.5 overflow-x-auto scrollbar-none text-[11px] sm:text-xs">
+      {/* Trending Tags Row (Horizontal Scrollable on Mobile) */}
+      <div className="border-b border-zinc-200 py-2 bg-white overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center gap-2.5 overflow-x-auto scrollbar-none text-[11px] sm:text-xs -mx-4 px-4 sm:mx-0 sm:px-0">
           <span className="px-2 py-0.5 bg-zinc-800 text-white rounded font-bold uppercase shrink-0">Trending</span>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center gap-3">
             {trendingTags.map((tag, idx) => (
               <a
                 key={idx}
                 href={ENQUIRY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-600 hover:text-zinc-950 hover:underline shrink-0 whitespace-nowrap cursor-pointer"
+                className="text-zinc-600 hover:text-zinc-955 hover:underline shrink-0 whitespace-nowrap cursor-pointer"
               >
                 {tag}
               </a>
@@ -160,7 +185,7 @@ export default function Index() {
       </div>
 
       {/* Breadcrumb path */}
-      <div className="mx-auto max-w-7xl px-6 pt-4 text-[11.5px] text-zinc-400 font-medium">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-4 text-[11.5px] text-zinc-400 font-medium">
         <span>News</span> <span className="mx-1.5">/</span>
         <span>World News</span> <span className="mx-1.5">/</span>
         <span>US News</span> <span className="mx-1.5">/</span>
@@ -168,7 +193,7 @@ export default function Index() {
       </div>
 
       {/* Main Grid Content Layout */}
-      <main className="mx-auto max-w-7xl px-6 py-6">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 py-4 md:py-6">
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Main Editorial Article */}
           <article className="lg:col-span-8 space-y-6">
@@ -183,37 +208,42 @@ export default function Index() {
                 <span>/</span>
                 <span>Updated: Jul 07, 2026, 11:40 IST</span>
               </div>
-              <div className="flex items-center justify-between py-2 border-b border-zinc-150">
-                <div className="flex items-center gap-2.5">
-                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 border border-zinc-200 rounded-lg text-xs font-bold text-zinc-655 bg-white hover:bg-zinc-50 cursor-pointer transition-colors">
-                    <MessageSquare className="w-4 h-4" /> Comments
+              <div className="flex flex-wrap items-center justify-between gap-y-2 py-2 border-b border-zinc-150">
+                <div className="flex items-center gap-2">
+                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-2.5 py-1.5 border border-zinc-200 rounded-lg text-[11px] font-bold text-zinc-605 bg-white hover:bg-zinc-50 cursor-pointer transition-colors sm:px-3 sm:py-1.5 sm:text-xs">
+                    <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Comments
                   </a>
-                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 border border-zinc-200 rounded-lg text-xs font-bold text-zinc-655 bg-white hover:bg-zinc-50 cursor-pointer transition-colors">
-                    <Share2 className="w-4 h-4" /> Share
+                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-2.5 py-1.5 border border-zinc-200 rounded-lg text-[11px] font-bold text-zinc-605 bg-white hover:bg-zinc-50 cursor-pointer transition-colors sm:px-3 sm:py-1.5 sm:text-xs">
+                    <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Share
                   </a>
-                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-2 py-1.5 border border-zinc-200 rounded-lg text-xs text-zinc-655 bg-white hover:bg-zinc-50 cursor-pointer transition-colors" title="Print page">
+                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center gap-1 px-2 py-1.5 border border-zinc-200 rounded-lg text-xs text-zinc-605 bg-white hover:bg-zinc-50 cursor-pointer transition-colors" title="Print page">
                     <Printer className="w-4 h-4" />
                   </a>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mr-1">Font Size</span>
-                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="w-7 h-7 border border-zinc-200 rounded bg-white text-xs font-bold flex items-center justify-center hover:bg-zinc-50 cursor-pointer">A</a>
-                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="w-7 h-7 border border-zinc-200 rounded bg-white text-sm font-bold flex items-center justify-center hover:bg-zinc-50 cursor-pointer">A</a>
+                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mr-1 hidden sm:inline">Font Size</span>
+                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="w-6 h-6 border border-zinc-200 rounded bg-white text-[10px] font-bold flex items-center justify-center hover:bg-zinc-50 cursor-pointer sm:w-7 sm:h-7 sm:text-xs">A</a>
+                  <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="w-6 h-6 border border-zinc-200 rounded bg-white text-xs font-bold flex items-center justify-center hover:bg-zinc-50 cursor-pointer sm:w-7 sm:h-7 sm:text-sm">A</a>
                 </div>
               </div>
             </header>
 
             {/* Main Hero Video */}
-            <div className="overflow-hidden rounded-xl border border-zinc-200 aspect-[9/16] md:aspect-[16/9] bg-black shadow-sm max-w-sm md:max-w-none mx-auto w-full">
+            <div className="overflow-hidden rounded-xl border border-zinc-200 aspect-[9/16] md:aspect-[16/9] bg-black shadow-sm max-w-sm md:max-w-none mx-auto w-full max-h-[65vh] md:max-h-none flex items-center justify-center">
               <video
                 src={video1}
                 controls
-                autoPlay
-                muted
                 loop
                 playsInline
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-full object-contain bg-black cursor-pointer"
                 poster={heroPortrait}
+                onClick={(e) => {
+                  if (e.currentTarget.paused) {
+                    e.currentTarget.play().catch(() => {});
+                  } else {
+                    e.currentTarget.pause();
+                  }
+                }}
               />
             </div>
 
@@ -239,16 +269,21 @@ export default function Index() {
               </p>
 
               {/* Second Video */}
-              <div className="rounded-xl overflow-hidden border border-zinc-200 shadow bg-black aspect-[9/16] md:aspect-[16/9] max-w-sm md:max-w-none mx-auto w-full my-6">
+              <div className="rounded-xl overflow-hidden border border-zinc-200 shadow bg-black aspect-[9/16] md:aspect-[16/9] max-w-sm md:max-w-none mx-auto w-full my-6 max-h-[65vh] md:max-h-none flex items-center justify-center">
                 <video
                   src={video2}
                   controls
-                  autoPlay
-                  muted
                   loop
                   playsInline
-                  className="w-full h-full object-contain bg-black"
+                  className="w-full h-full object-contain bg-black cursor-pointer"
                   poster={related2}
+                  onClick={(e) => {
+                    if (e.currentTarget.paused) {
+                      e.currentTarget.play().catch(() => {});
+                    } else {
+                      e.currentTarget.pause();
+                    }
+                  }}
                 />
               </div>
 
@@ -369,21 +404,21 @@ export default function Index() {
           </aside>
         </div>
 
-        {/* Related Articles */}
+        {/* Related */}
         <section className="border-t border-zinc-200 mt-12 pt-10 space-y-5">
-          <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-zinc-950 tracking-tight">
+          <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-zinc-955 tracking-tight">
             Related Crypto Analysis
           </h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {bottomRelated.map((story, i) => (
               <a key={i} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="group block space-y-3 cursor-pointer">
                 <div className="overflow-hidden rounded-lg border border-zinc-200 aspect-[3/2] bg-zinc-50 shadow-sm">
                   <img src={story.img} alt={story.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] uppercase font-bold text-indigo-600 block">{story.cat}</span>
-                  <h5 className="font-bold text-sm leading-snug text-zinc-900 group-hover:text-indigo-600 transition-colors">{story.title}</h5>
-                  <p className="text-[11px] text-zinc-455 line-clamp-3 leading-relaxed font-light">{story.desc}</p>
+                  <span className="text-[9px] uppercase font-bold text-indigo-650 block">{story.cat}</span>
+                  <h5 className="font-bold text-xs sm:text-sm leading-snug text-zinc-900 group-hover:text-indigo-650 transition-colors line-clamp-3 md:line-clamp-none">{story.title}</h5>
+                  <p className="text-[10px] sm:text-[11px] text-zinc-500 line-clamp-3 leading-relaxed font-light hidden sm:block">{story.desc}</p>
                 </div>
               </a>
             ))}
@@ -392,10 +427,10 @@ export default function Index() {
 
         {/* Recommended */}
         <section className="border-t border-zinc-200 mt-12 pt-10 space-y-5">
-          <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-zinc-950 tracking-tight">
+          <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-zinc-955 tracking-tight">
             Recommended For You
           </h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {bottomRecommended.map((story, i) => (
               <a key={i} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="group block space-y-3 cursor-pointer">
                 <div className="overflow-hidden rounded-lg border border-zinc-200 aspect-[3/2] bg-zinc-50 shadow-sm">
@@ -403,8 +438,8 @@ export default function Index() {
                 </div>
                 <div className="space-y-1">
                   <span className="text-[9px] uppercase font-bold text-zinc-400 block">{story.cat}</span>
-                  <h5 className="font-bold text-sm leading-snug text-zinc-900 group-hover:text-indigo-600 transition-colors">{story.title}</h5>
-                  <p className="text-[11px] text-zinc-455 line-clamp-3 leading-relaxed font-light">{story.desc}</p>
+                  <h5 className="font-bold text-xs sm:text-sm leading-snug text-zinc-900 group-hover:text-indigo-650 transition-colors line-clamp-3 md:line-clamp-none">{story.title}</h5>
+                  <p className="text-[10px] sm:text-[11px] text-zinc-500 line-clamp-3 leading-relaxed font-light hidden sm:block">{story.desc}</p>
                 </div>
               </a>
             ))}
@@ -414,7 +449,7 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="border-t border-zinc-200 bg-zinc-50 py-12 mt-12 text-xs text-zinc-500">
-        <div className="mx-auto max-w-7xl px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-6 pb-8 border-b border-zinc-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 pb-8 border-b border-zinc-200">
           {[
             { title: "Chronicle Desks", links: ["Global Markets", "Crypto Desk", "Macro Policy", "Decentralized Finance", "Emerging Tech", "Venture Capital"] },
             { title: "Wealth Services", links: ["Portfolio Structuring", "Execution Management", "Cyprus Desk Hub", "Consultation Scheduler", "MPC Custody Audit", "Asset Preservation"] },
@@ -433,13 +468,77 @@ export default function Index() {
             </div>
           ))}
         </div>
-        <div className="mx-auto max-w-7xl px-6 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© 2026 The Investor's Chronicle. All rights reserved.</p>
           <p className="max-w-md sm:text-right leading-relaxed font-light text-zinc-400">
             Digital asset allocations carry severe risk parameters and may lead to full capital loss.
           </p>
         </div>
       </footer>
+
+      {/* Mobile Drawer Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Panel */}
+          <div className="relative flex w-full max-w-xs flex-col bg-white py-4 shadow-xl animate-in slide-in-from-left duration-300">
+            <div className="flex items-center justify-between px-4 pb-4 border-b border-zinc-100">
+              <span className="font-serif font-black text-lg text-zinc-955 tracking-tight uppercase">
+                Chronicle Menu
+              </span>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-md hover:bg-zinc-100 text-zinc-500 cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            {/* Scrollable links */}
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+              <div className="space-y-2">
+                <h5 className="text-[10px] uppercase tracking-wider font-bold text-zinc-400">Categories</h5>
+                <nav className="flex flex-col gap-3 font-semibold text-zinc-700 text-sm">
+                  <a href="/" className="text-zinc-955 font-black border-l-2 border-zinc-955 pl-2">Home</a>
+                  {["City", "Live", "India", "World", "Business", "Sports", "Cricket", "Entertainment", "Tech", "Blogs"].map((cat) => (
+                    <a key={cat} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-955 pl-2 hover:border-l-2 hover:border-zinc-300 transition-all">{cat}</a>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="space-y-2 pt-4 border-t border-zinc-100">
+                <h5 className="text-[10px] uppercase tracking-wider font-bold text-zinc-400">Trending Areas</h5>
+                <div className="flex flex-col gap-2.5 text-xs font-medium text-zinc-605 font-semibold">
+                  {["AI Masterclass", "Money Masterclass", "Ask Apollo", "BTC Backtest", "Cyprus Sourcing", "MPC Custody"].map((item, idx) => (
+                    <a key={idx} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900">{item}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Panel Actions */}
+            <div className="border-t border-zinc-100 p-4 space-y-3">
+              <a 
+                href={ENQUIRY} 
+                className="flex items-center justify-center w-full py-2.5 bg-zinc-955 text-white rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-colors text-center"
+              >
+                Private Wealth Enquiry
+              </a>
+              <a 
+                href={ENQUIRY} 
+                className="flex items-center justify-center w-full py-2.5 border border-zinc-200 text-zinc-850 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-zinc-50 transition-colors text-center"
+              >
+                Sign In
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

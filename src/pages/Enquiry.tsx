@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, memo } from "react";
 import {
   AlertCircle, CheckCircle, ArrowRight, Shield, Lock,
-  Activity, KeyRound, Fingerprint, Radar, BadgeCheck,
+  Activity, KeyRound, Fingerprint, Radar, BadgeCheck, Menu, X
 } from "lucide-react";
 import { CountrySelect } from "../components/CountrySelect";
 import { getCountry, validatePhoneNumber } from "../lib/phoneValidation";
@@ -95,6 +95,7 @@ function Field({
    Main page component
 ───────────────────────────────────────────────────────── */
 export default function Enquiry() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -233,7 +234,7 @@ export default function Enquiry() {
       {/* Navbar */}
       <header className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4">
         <div
-          className={`w-full max-w-4xl rounded-2xl border backdrop-blur-xl px-6 py-2.5 flex items-center justify-between transition-all duration-300 ${
+          className={`w-full max-w-4xl rounded-2xl border backdrop-blur-xl px-4 sm:px-6 py-2.5 flex items-center justify-between transition-all duration-300 ${
             scrolled
               ? "bg-white/5 border-white/10 shadow-lg shadow-purple-900/20"
               : "bg-white/[0.02] border-white/5"
@@ -251,14 +252,22 @@ export default function Enquiry() {
             <a href="#security" className="hover:text-white transition-colors">Security</a>
             <a href="#contact" className="hover:text-white transition-colors">Invest Desk</a>
           </nav>
-          <div className="w-10 h-10 md:hidden" />
+
+          {/* Mobile menu trigger */}
+          <button 
+            onClick={() => setMobileMenuOpen(true)}
+            className="md:hidden p-1.5 rounded-md hover:bg-white/5 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            aria-label="Open navigation menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
         </div>
       </header>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-6 pt-40 md:pt-48 pb-20 space-y-32">
+      <main className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-28 md:pt-48 pb-20 space-y-24 md:space-y-32">
 
         {/* Hero */}
-        <section id="hero" className="text-center max-w-3xl mx-auto space-y-8">
+        <section id="hero" className="text-center max-w-3xl mx-auto space-y-6 md:space-y-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 backdrop-blur px-4 py-1.5 shadow-[0_0_15px_rgba(168,85,247,0.15)]">
             <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse shadow-[0_0_8px_rgba(168,85,247,1)]" />
             <span className="text-[11px] font-bold text-purple-300 uppercase tracking-[0.15em]">
@@ -266,18 +275,18 @@ export default function Enquiry() {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl leading-[1.05] font-extrabold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl leading-[1.1] md:leading-[1.05] font-extrabold tracking-tight text-white">
             Systematically Increase Your{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent drop-shadow-sm">
               Digital Asset Investments
             </span>
           </h1>
 
-          <p className="max-w-xl mx-auto text-sm sm:text-base text-slate-400 font-light leading-relaxed">
+          <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-400 font-light leading-relaxed">
             Partner with our private advisory desks to expand your active allocation sizes, generate compound yields, and securely scale your invested capital.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 md:pt-6">
             <a href="#contact" className="group inline-flex items-center justify-center gap-2 h-12 w-full sm:w-auto px-8 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold uppercase tracking-wider hover:from-purple-500 hover:to-blue-500 transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:-translate-y-0.5 border border-white/10">
               Start Investing <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </a>
@@ -286,7 +295,7 @@ export default function Enquiry() {
             </a>
           </div>
 
-          <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[10px] text-slate-500 font-bold uppercase tracking-wider pt-8">
+          <ul className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-3 text-[9px] sm:text-[10px] text-slate-500 font-bold uppercase tracking-wider pt-6 md:pt-8">
             <li className="flex items-center gap-1.5"><BadgeCheck className="w-4 h-4 text-purple-400" /> Fully Licensed</li>
             <li className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-purple-400" /> Bank-level Security</li>
             <li className="flex items-center gap-1.5"><Activity className="w-4 h-4 text-purple-400" /> 24/7 Monitoring</li>
@@ -294,37 +303,37 @@ export default function Enquiry() {
         </section>
 
         {/* Platform */}
-        <section id="platform" className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <section id="platform" className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg">
             <div className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-purple-400">
               <span className="w-5 h-0.5 bg-purple-500" /> Platform
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
               Engineered to compound and grow your capital allocations.
             </h2>
-            <p className="text-sm text-slate-400 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light">
               We focus on expanding client positions, helping wealth builders continuously increase their digital asset holdings via structured arbitrage and yield strategies.
             </p>
-            <ul className="space-y-5 pt-4">
+            <ul className="space-y-4 sm:space-y-5 pt-2">
               {[
                 { title: "Diversified Asset Portfolios", desc: "Curated allocations across blue-chip digital assets, stablecoins, and hedged strategies." },
                 { title: "AI-assisted Market Sourcing", desc: "Algorithmic execution models translating market volatility into disciplined bid triggers." },
                 { title: "Continuous Risk Rebalancing", desc: "Constant portfolio monitoring and active drawdown limits preserve principal value." },
               ].map((f, idx) => (
                 <li key={idx} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-purple-400 font-bold text-xs shadow-inner">
+                  <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-purple-400 font-bold text-xs shadow-inner">
                     0{idx + 1}
                   </div>
                   <div>
                     <h4 className="font-bold text-xs text-white uppercase tracking-wider">{f.title}</h4>
-                    <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{f.desc}</p>
+                    <p className="text-[11px] sm:text-xs text-slate-400 mt-1 leading-relaxed">{f.desc}</p>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="bg-[#131218]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#131218]/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
             <div className="absolute -top-16 -right-16 w-48 h-48 bg-purple-600/20 rounded-full blur-[50px]" />
             <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/20 rounded-full blur-[50px]" />
             <h4 className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 pb-3">Yield Compounding Model</h4>
@@ -342,7 +351,7 @@ export default function Enquiry() {
               <circle cx="90" cy="60" r="3.5" fill="#0b0a10" stroke="#8b5cf6" strokeWidth="2" />
               <circle cx="180" cy="25" r="3.5" fill="#0b0a10" stroke="#3b82f6" strokeWidth="2" />
             </svg>
-            <div className="flex justify-between items-center text-xs text-slate-400 font-mono">
+            <div className="flex justify-between items-center text-[11px] sm:text-xs text-slate-400 font-mono">
               <span>Tier-1 Liquidity Pool</span>
               <span className="font-bold text-white bg-white/10 px-2 py-1 rounded-md">+24.8% Projected</span>
             </div>
@@ -350,27 +359,27 @@ export default function Enquiry() {
         </section>
 
         {/* Security */}
-        <section id="security" className="space-y-12">
+        <section id="security" className="space-y-8 md:space-y-12">
           <div className="text-center max-w-xl mx-auto space-y-4">
             <div className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-purple-400">
               <span className="w-5 h-0.5 bg-purple-500" /> Security
             </div>
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">Institutional security at every layer.</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Institutional security at every layer.</h2>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { icon: Lock, title: "Cold Wallet Protection", desc: "95% of assets are held in geographically isolated air-gapped vaults." },
               { icon: KeyRound, title: "Multi-Signature Vaults", desc: "Every transaction requires distributed approval from multiple key holders." },
               { icon: Radar, title: "Real-Time Intrusion Checks", desc: "Continuous security monitoring with automated shutdown mechanisms." },
               { icon: Fingerprint, title: "Asset Protection Cover", desc: "Insurance policies backed by leading institutional underwriters." },
             ].map((it, idx) => (
-              <div key={idx} className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-6 rounded-2xl shadow-lg hover:bg-white/[0.05] hover:border-white/20 transition-all flex flex-col justify-between min-h-[220px] group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform">
-                  <it.icon className="w-5 h-5" />
+              <div key={idx} className="bg-white/[0.03] backdrop-blur-sm border border-white/10 p-4 sm:p-6 rounded-2xl shadow-lg hover:bg-white/[0.05] hover:border-white/20 transition-all flex flex-col justify-between min-h-[180px] sm:min-h-[220px] group">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform">
+                  <it.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <div className="space-y-2 pt-6">
-                  <h4 className="font-bold text-xs text-white uppercase tracking-wider">{it.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed font-light">{it.desc}</p>
+                <div className="space-y-1.5 pt-4">
+                  <h4 className="font-bold text-[10px] sm:text-xs text-white uppercase tracking-wider">{it.title}</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-400 leading-normal font-light">{it.desc}</p>
                 </div>
               </div>
             ))}
@@ -379,9 +388,9 @@ export default function Enquiry() {
 
         {/* Contact Form */}
         <section id="contact" className="relative max-w-4xl mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-blue-600/30 rounded-[2.5rem] blur-2xl opacity-50 -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-blue-600/30 rounded-[2rem] sm:rounded-[2.5rem] blur-2xl opacity-50 -z-10" />
 
-          <div className="bg-[#131218]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 sm:p-12 shadow-2xl grid lg:grid-cols-12 gap-12 items-stretch relative overflow-hidden">
+          <div className="bg-[#131218]/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-12 shadow-2xl grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
 
             {/* Info */}
@@ -530,13 +539,72 @@ export default function Enquiry() {
       </main>
 
       <footer className="border-t border-white/10 bg-[#0b0a10] py-12 mt-12">
-        <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-xs text-slate-500 font-light">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-xs text-slate-500 font-light">
           <p>© 2026 Meridian Capital Review Ltd. Private Advisory Desk.</p>
           <p className="max-w-md sm:text-right leading-relaxed">
             Authorized Wealth Communications. Sourced digital trades conform to strict security models.
           </p>
         </div>
       </footer>
+
+      {/* Mobile Glass Menu Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Panel */}
+          <div className="relative flex w-full max-w-[280px] flex-col bg-[#0f0e15]/95 border-r border-white/10 p-6 shadow-2xl animate-in slide-in-from-left duration-300">
+            <div className="flex items-center justify-between pb-6 border-b border-white/5">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-purple-500/30">
+                  M
+                </span>
+                <span className="font-semibold text-sm tracking-tight text-white uppercase">
+                  Meridian Prime
+                </span>
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-md hover:bg-white/5 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <nav className="flex flex-col gap-4 mt-8 text-sm font-semibold text-slate-400">
+              {[
+                { label: "Home", href: "#hero" },
+                { label: "Platform", href: "#platform" },
+                { label: "Security", href: "#security" },
+                { label: "Invest Desk", href: "#contact" }
+              ].map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="hover:text-white transition-colors py-2 border-b border-white/[0.02]"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="mt-auto pt-6 border-t border-white/5">
+              <a 
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)] text-center animate-pulse"
+              >
+                Start Investing
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

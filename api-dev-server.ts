@@ -117,13 +117,20 @@ const server = http.createServer(async (req, res) => {
       console.log(`[CRM] Response Body: ${responseText}`);
       console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
 
-      const alreadyExists = responseText.toLowerCase().includes("already exist");
+      // Parse JSON body to detect app-level errors (CRM may return 200 with {"error":"..."})
+      let parsedBody: any = null;
+      try { parsedBody = JSON.parse(responseText); } catch { /* plain text */ }
 
-      if (!crmRes.ok && !alreadyExists) {
-        return json(res, 200, { success: false, error: responseText || "CRM rejected lead" });
+      const alreadyExists = responseText.toLowerCase().includes("already exist");
+      const crmAppError = parsedBody?.error && !alreadyExists;
+
+      if ((!crmRes.ok || crmAppError) && !alreadyExists) {
+        const errMsg = parsedBody?.error || responseText || "CRM rejected lead";
+        console.warn(`[CRM] Lead rejected: ${errMsg}`);
+        return json(res, 200, { success: false, error: errMsg });
       }
 
-      // Increment lead count in Vercel Blob
+      // Only increment count when CRM genuinely accepted the lead
       try {
         const newCount = await incrementLeadCount();
         console.log(`[LEAD COUNT] Incremented - new count: ${newCount}`);
