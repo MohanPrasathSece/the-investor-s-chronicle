@@ -36,6 +36,16 @@ export default function Index() {
     "Gas Fees Reduction",
     "Zero-Knowledge Rollups",
     "L3 Scalability",
+    "US Debt Ceiling",
+    "Interest Rate Spikes",
+    "Nasdaq Record Highs",
+    "NVIDIA Valuation",
+    "Tokyo Inflation",
+    "ECB Rate Cuts",
+    "Gold Reserve Index",
+    "Crude Oil Spreads",
+    "Eurozone Divergence",
+    "Arbitrum Upgrade",
   ];
 
   const sideStories = [
@@ -169,7 +179,7 @@ export default function Index() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center gap-x-4 overflow-x-auto scrollbar-none whitespace-nowrap -mx-4 px-4 sm:mx-0 sm:px-0">
           <span className="font-bold text-rose-600 uppercase tracking-wider shrink-0 text-[10px] md:text-xs">In The News</span>
           <div className="flex items-center gap-x-4">
-            {["AI Masterclass", "Money Masterclass", "Ask Apollo", "Parentology", "BTC Backtest", "Cyprus Sourcing", "MPC Custody", "Solana ETF Decision", "Institutional Inflows", "Securitized Yields", "Tokenized Treasury", "Arbitrage Desks"].map((item, idx) => (
+            {["AI Masterclass", "Money Masterclass", "Ask Apollo", "Parentology", "BTC Backtest", "Cyprus Sourcing", "MPC Custody", "Solana ETF Decision", "Institutional Inflows", "Securitized Yields", "Tokenized Treasury", "Arbitrage Desks", "Tokenized Bonds", "Yield Compression", "SEC Updates", "Macro Indicators", "Treasury Yields", "DeFi Governance", "Gas Token Spikes", "DEX Volumes", "Venture Deployments", "AI Cloud Spending"].map((item, idx) => (
               <a key={idx} href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-zinc-600 hover:text-zinc-900 cursor-pointer shrink-0">
                 <span className="text-zinc-300">|</span>
                 {item}

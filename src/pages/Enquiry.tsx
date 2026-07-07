@@ -11,6 +11,15 @@ import Lightfall from "../components/Lightfall";
    Memoized background – never re-renders when form changes
 ───────────────────────────────────────────────────────── */
 const PageBackground = memo(function PageBackground() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <>
       {/* Lightfall WebGL */}
@@ -19,11 +28,11 @@ const PageBackground = memo(function PageBackground() {
           colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
           backgroundColor="#0A29FF"
           speed={0.4}
-          streakCount={2}
+          streakCount={isMobile ? 1 : 2}
           streakWidth={2.5}
           streakLength={1.8}
           glow={1}
-          density={0.3}
+          density={isMobile ? 0.12 : 0.3}
           twinkle={1}
           zoom={2}
           backgroundGlow={1}
