@@ -208,7 +208,7 @@ export default function Index() {
           {/* Left Column: Main Editorial Article */}
           <article className="lg:col-span-8 space-y-6">
             <header className="space-y-3.5">
-              <h1 className="font-extrabold text-2xl sm:text-4xl md:text-5xl leading-[1.08] text-zinc-950 tracking-tight" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              <h1 className="font-extrabold text-2xl sm:text-4xl md:text-5xl leading-[1.08] text-zinc-955 tracking-tight" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
                 'The Crypto Alpha Shift': Institutional Execution & Risk Hedging in 2026
               </h1>
               <div className="text-[11.5px] text-zinc-455 font-medium flex flex-wrap items-center gap-2 border-y border-zinc-100 py-2">
@@ -258,20 +258,20 @@ export default function Index() {
             </div>
 
             {/* Main Prose */}
-            <div className="prose prose-md max-w-none text-zinc-700 space-y-5 text-[14px] sm:text-[15.5px] md:text-[17px] leading-relaxed" style={{ fontFamily: "'Sora', sans-serif" }}>
+            <div className="prose prose-md max-w-none text-zinc-700 space-y-5 text-[14px] sm:text-[15.5px] md:text-[17px] leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
               <p className="font-medium text-base sm:text-lg text-zinc-900 leading-relaxed">
                 <span className="font-bold text-zinc-950">LONDON:</span> Cryptocurrency markets in 2026 have shifted from speculative retail assets into a highly structured quantitative ecosystem. With zero-interest rate policies phased out globally, yield preservation and capital sustainability are the primary parameters guiding capital allocations.
               </p>
               <p>
                 According to recent transaction data, multi-signature custodial addresses hold over 40% of the active liquid supply, pointing to a steady accumulation phase. Systemic capital is moving away from leveraged derivative trades and instead flowing into decentralized, spot-backed liquidity feeds.
               </p>
-              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
                 1. Real-time Spot Sourcing Desks
               </h3>
               <p>
                 Underlying liquidity sourcing networks connect execution directly to major global spot liquidity channels. By routing allocations across deep order book matrices, institutions mitigate slippage and capture optimal pricing spreads even during high volatility market segments.
               </p>
-              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
                 2. Sourced Crypto Stories: How Strategic Allocations Changed Lives
               </h3>
               <p>
@@ -297,7 +297,7 @@ export default function Index() {
                 />
               </div>
 
-              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
                 3. Yield Optimization & DCA Models
               </h3>
               <p>
@@ -306,7 +306,7 @@ export default function Index() {
               <p>
                 Unlike previous market regimes that relied on unsecured lending platforms, modern yields are generated via delta-neutral funding rate arbitrage. By offsetting spot acquisitions with short perpetual futures positions, desks secure structural yields independent of directional token volatility.
               </p>
-              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Fraunces', Georgia, serif" }}>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
                 4. Custodial Signers & Key Protection
               </h3>
               <p>
