@@ -150,10 +150,25 @@ export default function Enquiry() {
     [country]
   );
 
-  /* Re-validate phone when country changes */
+  /* Instant validation for phone number whenever phone or country changes */
   useEffect(() => {
-    if (touched.phone) validateField("phone", phone);
-  }, [country]); // eslint-disable-line
+    if (!phone.trim()) {
+      setErrors((prev) => {
+        const { phone: _, ...rest } = prev;
+        return rest;
+      });
+      return;
+    }
+    const phoneErr = validatePhoneNumber(phone, country);
+    setErrors((prev) => {
+      if (phoneErr) {
+        return { ...prev, phone: phoneErr };
+      } else {
+        const { phone: _, ...rest } = prev;
+        return rest;
+      }
+    });
+  }, [phone, country]);
 
   /* Blur handler — mark touched + validate */
   const onBlur = useCallback(
@@ -164,14 +179,12 @@ export default function Enquiry() {
     [validateField]
   );
 
-  /* Phone onChange — validate immediately once touched */
+  /* Phone onChange — just update value (useEffect handles instant validation) */
   const onPhoneChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const v = e.target.value;
-      setPhone(v);
-      if (touched.phone) validateField("phone", v);
+      setPhone(e.target.value);
     },
-    [touched.phone, validateField]
+    []
   );
 
   /* Submit */
@@ -485,7 +498,7 @@ export default function Enquiry() {
                         autoComplete="tel"
                       />
                     </div>
-                    {touched.phone && errors.phone && (
+                    {errors.phone && (
                       <span className="mt-1.5 block text-xs text-rose-400 animate-in fade-in slide-in-from-top-1 duration-150">
                         {errors.phone}
                       </span>

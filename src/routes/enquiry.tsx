@@ -174,6 +174,26 @@ function Enquiry() {
     return () => window.removeEventListener("scroll", on);
   }, []);
 
+  // Instant validation for phone number whenever phone or country changes
+  useEffect(() => {
+    if (!form.phone.trim()) {
+      setErrors((prev) => {
+        const { phone, ...rest } = prev;
+        return rest;
+      });
+      return;
+    }
+    const phoneErr = validatePhoneNumber(form.phone, form.country);
+    setErrors((prev) => {
+      if (phoneErr) {
+        return { ...prev, phone: phoneErr };
+      } else {
+        const { phone, ...rest } = prev;
+        return rest;
+      }
+    });
+  }, [form.phone, form.country]);
+
   const setField = (field: keyof FormState) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
