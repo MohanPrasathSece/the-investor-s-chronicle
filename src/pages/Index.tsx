@@ -133,7 +133,7 @@ export default function Index() {
         </div>
 
         <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="inline-block text-xl sm:text-3xl md:text-5xl lg:text-6.5xl font-extrabold tracking-tight text-zinc-955 uppercase cursor-pointer px-12 md:px-0" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-          The Investor's Chronicle
+          The Report Desk
         </a>
 
         {/* Mobile Sign In Button */}
@@ -215,7 +215,7 @@ export default function Index() {
         <span>News</span> <span className="mx-1.5">/</span>
         <span>World News</span> <span className="mx-1.5">/</span>
         <span>US News</span> <span className="mx-1.5">/</span>
-        <span className="text-zinc-800 font-bold">"The Crypto Alpha Shift"</span>
+        <span className="text-zinc-800 font-bold">"Crypto Vance Story"</span>
       </div>
 
       {/* Main Grid Content Layout */}
@@ -225,12 +225,12 @@ export default function Index() {
           <article className="lg:col-span-8 space-y-6">
             <header className="space-y-3.5">
               <h1 className="font-extrabold text-2xl sm:text-4xl md:text-5xl leading-[1.08] text-zinc-955 tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                'The Crypto Alpha Shift': Institutional Execution & Risk Hedging in 2026
+                From Student Debt to $45M: How 25-Year-Old Ryan Vance Beat the Crypto Market
               </h1>
               <div className="text-[11.5px] text-zinc-455 font-medium flex flex-wrap items-center gap-2 border-y border-zinc-100 py-2">
-                <span className="text-zinc-900 font-bold">Chronicle World Desk</span>
+                <span className="text-zinc-900 font-bold">Report Desk World Desk</span>
                 <span>/</span>
-                <span>THEINVESTORSCHRONICLE.COM</span>
+                <span>THEREPORTDESK.COM</span>
                 <span>/</span>
                 <span>Updated: Jul 07, 2026, 11:40 IST</span>
               </div>
@@ -272,26 +272,25 @@ export default function Index() {
                 }}
               />
             </div>
-
             {/* Main Prose */}
             <div className="prose prose-md max-w-none text-zinc-700 space-y-5 text-[14px] sm:text-[15.5px] md:text-[17px] leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
               <p className="font-medium text-base sm:text-lg text-zinc-900 leading-relaxed">
-                <span className="font-bold text-zinc-950">LONDON:</span> Cryptocurrency markets in 2026 have shifted from speculative retail assets into a highly structured quantitative ecosystem. With zero-interest rate policies phased out globally, yield preservation and capital sustainability are the primary parameters guiding capital allocations.
+                <span className="font-bold text-zinc-955">LONDON:</span> At just 25 years old, Ryan Vance has achieved what most traders spend lifetimes chasing. The former university dropout, who once struggled to pay his monthly rent, now sits at the helm of a digital asset portfolio valued at over $45 million. His secret? A systematic approach to cryptocurrency that completely avoids the speculative traps of the average retail investor.
               </p>
               <p>
-                According to recent transaction data, multi-signature custodial addresses hold over 40% of the active liquid supply, pointing to a steady accumulation phase. Systemic capital is moving away from leveraged derivative trades and instead flowing into decentralized, spot-backed liquidity feeds.
-              </p>
-              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                1. Real-time Spot Sourcing Desks
-              </h3>
-              <p>
-                Underlying liquidity sourcing networks connect execution directly to major global spot liquidity channels. By routing allocations across deep order book matrices, institutions mitigate slippage and capture optimal pricing spreads even during high volatility market segments.
+                "I didn't get rich by guessing the next meme coin," Ryan shares during an exclusive interview. "I treated crypto like a business. While everyone else was looking at social media hype, I was looking at order books, liquidity spreads, and yield optimization models. It’s about building a machine that works for you, not gambling your savings."
               </p>
               <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                2. Sourced Crypto Stories: How Strategic Allocations Changed Lives
+                1. Finding the Alpha in Simple Strategies
               </h3>
               <p>
-                The impact of structured crypto asset routing extends beyond balance sheets to individual wealth builder trajectories. By accessing low-volatility yield desks, private accumulators have managed to completely transform their security frameworks.
+                Ryan’s journey started with a simple observation: retail traders consistently lose money because they buy high out of FOMO (Fear Of Missing Out) and sell low out of panic. To beat the cycle, Ryan designed a strict execution strategy based on dollar-cost averaging (DCA). By automating his buys at set intervals regardless of daily price swings, he built a solid foundation without trying to time the market.
+              </p>
+              <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                2. Generating Passive Cash Flow via DeFi Yields
+              </h3>
+              <p>
+                Instead of letting his assets sit idle, Ryan focused on safe, delta-neutral yield strategies. By providing liquidity to decentralized spot pools, he began earning consistent, passive income. "In crypto, your money should never sleep," Ryan explains. "By capturing trading fees rather than just betting on prices going up, you create a sustainable safety net that keeps growing even during market downturns."
               </p>
 
               {/* Second Video */}
@@ -314,19 +313,19 @@ export default function Index() {
               </div>
 
               <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                3. Yield Optimization & DCA Models
+                3. The Retail Trap: Why Most Traders Fail
               </h3>
               <p>
-                DCA (Dollar-Cost Averaging) remains the most robust execution protocol for volatile token indices. By establishing fixed, time-based purchases, allocators mitigate short-term pricing fluctuations, achieving a balanced spot acquisition average.
+                Most newcomers try to trade with high leverage on unregulated platforms, which Ryan describes as a recipe for disaster. "Exchanges make money when you trade frequently and lose," he warns. "To truly scale, you have to transition from a retail gambler to an institutional allocator. That means prioritizing security, minimizing slippage on large trades, and getting professional execution."
               </p>
               <p>
-                Unlike previous market regimes that relied on unsecured lending platforms, modern yields are generated via delta-neutral funding rate arbitrage. By offsetting spot acquisitions with short perpetual futures positions, desks secure structural yields independent of directional token volatility.
+                Unlike previous market regimes that relied on unsecured lending platforms, Ryan's current yields are generated via structured market making spreads. By offsetting spot acquisitions with short positions, he secures structural gains independent of directional token volatility.
               </p>
               <h3 className="font-serif text-base sm:text-lg font-bold text-zinc-900 pt-3 border-b border-zinc-100 pb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                4. Custodial Signers & Key Protection
+                4. Scaling Up with Professional Desks
               </h3>
               <p>
-                The final dimension of modern crypto trading is security. Asset protection frameworks have evolved past single-point-of-failure private keys. Multi-Party Computation (MPC) protocols allow co-signers to approve transactions without exposing key shards, ensuring institutional assets remain resilient to digital vulnerabilities.
+                When his net worth crossed the seven-figure mark, Ryan knew he couldn't keep his funds on standard retail exchanges. He moved his capital into institutional-grade custody and execution desks. By partnering with elite wealth services like **Meridian Capital**, Ryan secured multi-signature security, delta-neutral yield structures, and zero-slippage OTC execution. "For anyone serious about protecting and scaling their wealth, partnering with a desk like Meridian is the ultimate game changer," Ryan says.
               </p>
             </div>
           </article>
@@ -477,7 +476,7 @@ export default function Index() {
       <footer className="border-t border-zinc-200 bg-zinc-50 py-12 mt-12 text-xs text-zinc-500">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 pb-8 border-b border-zinc-200">
           {[
-            { title: "Chronicle Desks", links: ["Global Markets", "Crypto Desk", "Macro Policy", "Decentralized Finance", "Emerging Tech", "Venture Capital"] },
+            { title: "Report Desks", links: ["Global Markets", "Crypto Desk", "Macro Policy", "Decentralized Finance", "Emerging Tech", "Venture Capital"] },
             { title: "Wealth Services", links: ["Portfolio Structuring", "Execution Management", "Cyprus Desk Hub", "Consultation Scheduler", "MPC Custody Audit", "Asset Preservation"] },
             { title: "Legal & Audits", links: ["Terms of Publication", "Privacy Framework", "Cookies Configuration", "Investment Risks Disclosure", "Regulatory Audits", "Fiduciary Mandates"] },
             { title: "Institutional", links: ["API Integration", "Corporate Access", "Research Database", "Sovereign Wealth", "Advisory Board", "Contact Editorial"] },
@@ -485,17 +484,33 @@ export default function Index() {
             <div key={col.title}>
               <h5 className="font-serif text-sm font-bold text-zinc-900 mb-3">{col.title}</h5>
               <ul className="space-y-2">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href={ENQUIRY} target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">{link}</a>
-                  </li>
-                ))}
+                {col.links.map((link) => {
+                  let href = ENQUIRY;
+                  let target: string | undefined = "_blank";
+                  let rel: string | undefined = "noopener noreferrer";
+
+                  if (link === "Terms of Publication") {
+                    href = "/terms";
+                    target = undefined;
+                    rel = undefined;
+                  } else if (link === "Privacy Framework") {
+                    href = "/privacy";
+                    target = undefined;
+                    rel = undefined;
+                  }
+
+                  return (
+                    <li key={link}>
+                      <a href={href} target={target} rel={rel} className="hover:underline cursor-pointer">{link}</a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p>© 2026 The Investor's Chronicle. All rights reserved.</p>
+          <p>© 2026 The Report Desk. All rights reserved.</p>
           <p className="max-w-md sm:text-right leading-relaxed font-light text-zinc-400">
             Digital asset allocations carry severe risk parameters and may lead to full capital loss.
           </p>
@@ -514,7 +529,7 @@ export default function Index() {
           <div className="relative flex w-full max-w-xs flex-col bg-white py-4 shadow-xl animate-in slide-in-from-left duration-300">
             <div className="flex items-center justify-between px-4 pb-4 border-b border-zinc-100">
               <span className="font-serif font-black text-lg text-zinc-955 tracking-tight uppercase">
-                Chronicle Menu
+                Report Desk Menu
               </span>
               <button
                 onClick={() => setMobileMenuOpen(false)}

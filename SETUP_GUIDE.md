@@ -1,7 +1,7 @@
 # Comprehensive System Architecture & Setup Manual
-## The Investor's Chronicle & Meridian Prime Platform
+## The Report Desk & Meridian Capital Platform
 
-This document serves as the absolute, single source of truth for the technical design, codebase configurations, API mappings, styling frameworks, database persistence layers, and CRM links for **The Investor's Chronicle** (financial news interface) and **Meridian Prime** (institutional wealth lead portal).
+This document serves as the absolute, single source of truth for the technical design, codebase configurations, API mappings, styling frameworks, database persistence layers, and CRM links for **The Report Desk** (financial news interface) and **Meridian Capital** (institutional wealth lead portal).
 
 ---
 
@@ -38,7 +38,7 @@ graph TD
 ### Routing Structure
 The application employs TanStack Router's file-based route definitions:
 - **`src/routes/index.tsx`**: Main entrypoint route mapping to the home page publication.
-- **`src/routes/enquiry.tsx`**: Route handler and TanStack Start Server Function orchestrating the Meridian Prime CRM connection.
+- **`src/routes/enquiry.tsx`**: Route handler and TanStack Start Server Function orchestrating the Meridian Capital CRM connection.
 - **`src/pages/Index.tsx`**: Component presentation layer for the newspaper article landing view.
 - **`src/pages/Enquiry.tsx`**: Component presentation layer for the wealthy investor enquiry layout.
 

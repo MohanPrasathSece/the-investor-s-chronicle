@@ -121,7 +121,7 @@ export default function Enquiry() {
 
   /* Update meta tags once */
   useEffect(() => {
-    document.title = "Meridian Prime - Digital Asset Wealth Platform";
+    document.title = "Meridian Capital - Digital Asset Wealth Platform";
   }, []);
 
   /* Scroll listener for navbar */
@@ -270,7 +270,7 @@ export default function Enquiry() {
             <span className="w-7 h-7 rounded-lg bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-purple-500/30">
               M
             </span>
-            <span className="font-semibold text-sm tracking-tight text-white uppercase">Meridian Prime</span>
+            <span className="font-semibold text-sm tracking-tight text-white uppercase">Meridian Capital</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-400">
             <a href="#hero" className="hover:text-white transition-colors">Home</a>
@@ -589,7 +589,7 @@ export default function Enquiry() {
                   M
                 </span>
                 <span className="font-semibold text-sm tracking-tight text-white uppercase">
-                  Meridian Prime
+                  Meridian Capital
                 </span>
               </div>
               <button

@@ -5,6 +5,8 @@ import { lazy, Suspense } from "react";
 // Lazy-load pages for code splitting
 const IndexPage = lazy(() => import("./pages/Index"));
 const EnquiryPage = lazy(() => import("./pages/Enquiry"));
+const PrivacyPage = lazy(() => import("./pages/Privacy"));
+const TermsPage = lazy(() => import("./pages/Terms"));
 
 // Root route — wraps all pages
 const rootRoute = createRootRoute({
@@ -56,4 +58,31 @@ const enquiryRoute = createRoute({
   ),
 });
 
-export const routeTree = rootRoute.addChildren([indexRoute, enquiryRoute]);
+// Privacy route: /privacy
+const privacyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/privacy",
+  component: () => (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <PrivacyPage />
+    </Suspense>
+  ),
+});
+
+// Terms route: /terms
+const termsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/terms",
+  component: () => (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <TermsPage />
+    </Suspense>
+  ),
+});
+
+export const routeTree = rootRoute.addChildren([
+  indexRoute,
+  enquiryRoute,
+  privacyRoute,
+  termsRoute,
+]);
