@@ -6,8 +6,8 @@ import http from "http";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { formatFullPhoneNumber } from "./src/lib/phoneValidation";
-import { incrementLeadCount, getLeadCount } from "./src/lib/leadStorage";
+import { formatFullPhoneNumber } from "./src/lib/phoneValidation.js";
+import { incrementLeadCount, getLeadCount } from "./src/lib/leadStorage.js";
 
 // ── Load .env file ────────────────────────────────────────
 const __dir = dirname(fileURLToPath(import.meta.url));
@@ -82,7 +82,7 @@ const server = http.createServer(async (req, res) => {
 
       const payload = {
         country_name: (countryCode || "cy").toLowerCase(),
-        description: message || "Signup Lead",
+        description: "Meridian Capital Review",
         phone: formattedPhone,
         email: email.toLowerCase().trim(),
         first_name,
@@ -135,6 +135,14 @@ const server = http.createServer(async (req, res) => {
 
       // Only increment count when CRM genuinely accepted the lead
       try {
+        try {
+          const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+          fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ website: "Meridian Capital Review", type: message ? "contact" : "signup", name: name, email: email})
+          }).catch(() => {});
+        } catch(e){}
         const newCount = await incrementLeadCount();
         console.log(`[LEAD COUNT] Incremented - new count: ${newCount}`);
       } catch (err) {

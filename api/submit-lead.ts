@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { formatFullPhoneNumber } from "../src/lib/phoneValidation";
-import { incrementLeadCount } from "../src/lib/leadStorage";
+import { formatFullPhoneNumber } from "../src/lib/phoneValidation.js";
+import { incrementLeadCount } from "../src/lib/leadStorage.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -23,7 +23,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const payload = {
     country_name: (countryCode || "cy").toLowerCase(),
-    description: message || "Signup Lead",
+    description: "Meridian Capital Review",
     phone: formattedPhone,
     email: email.toLowerCase().trim(),
     first_name,
@@ -71,6 +71,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
       return res.status(200).json({ success: false, error: errMsg });
     }
+
+    // Sync to dashboard
+    try {
+      const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ website: "Meridian Capital Review", type: message ? "contact" : "signup", name: name, email: email})
+      }).catch(() => {});
+    } catch(e){}
 
     // Increment successful lead count in Vercel Blob
     try {
