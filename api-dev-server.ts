@@ -141,7 +141,7 @@ const server = http.createServer(async (req, res) => {
       try {
         try {
           const url = (typeof process !== 'undefined' && process.env && process.env.VITE_DASHBOARD_URL) || "https://autodigix-leads-dashboard.vercel.app/api/increment";
-          fetch(url, {
+          await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ website: "Meridian Capital Review", type: message ? "contact" : "signup", name: name, email: email})
