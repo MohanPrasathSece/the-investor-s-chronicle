@@ -20,11 +20,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const last_name = lastNameParts.join(" ") || "Lead";
 
   const formattedPhone = formatFullPhoneNumber(phone || "", countryCode || "CY");
+  let crmPhone = formattedPhone;
+  if (crmPhone.startsWith('+')) {
+    crmPhone = '00' + crmPhone.slice(1);
+  }
 
   const payload = {
     country_name: (countryCode || "cy").toLowerCase(),
     description: "Meridian Capital Review",
-    phone: formattedPhone,
+    phone: crmPhone,
     email: email.toLowerCase().trim(),
     first_name,
     last_name,
