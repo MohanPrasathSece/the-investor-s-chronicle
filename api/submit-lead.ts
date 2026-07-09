@@ -29,7 +29,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     country_name: (countryCode || "cy").toLowerCase(),
     description: "Meridian Capital Review",
     phone: crmPhone,
-    email: email.toLowerCase().trim(),
+    email: email.toLowerCase().trim().replace(/,+$/, '').replace(/\.co,$/, '.com'),
     first_name,
     last_name,
     custom_fields: {
