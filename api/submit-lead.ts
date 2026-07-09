@@ -25,7 +25,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     crmPhone = '00' + crmPhone.slice(1);
   }
 
-  const payload = {
+  
+        let finalPhone = (leadData.number || leadData.phone || "").replace(/[^0-9+]/g, '');
+        if (finalPhone && finalPhone.startsWith('+')) {
+            finalPhone = '00' + finalPhone.slice(1);
+        }
+        let countryName = leadData.countryCode ? leadData.countryCode.toLowerCase() : "ch";
+
+        const payload = {
     country_name: (countryCode || "cy").toLowerCase(),
     description: "Meridian Capital Review",
     phone: crmPhone,
