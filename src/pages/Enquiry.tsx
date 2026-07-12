@@ -6,6 +6,7 @@ import {
 import { CountrySelect } from "../components/CountrySelect";
 import { getCountry, validatePhoneNumber } from "../lib/phoneValidation";
 import Lightfall from "../components/Lightfall";
+import { toast } from "sonner";
 
 /* ─────────────────────────────────────────────────────────
    Memoized background – never re-renders when form changes
@@ -241,9 +242,10 @@ export default function Enquiry() {
       } catch (err: any) {
       const rawMsg = (err?.message || err?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
+        toast.success("You have already contacted us. Please wait.");
+        setSubmitted(true);
         return;
       }
-
         console.error("[FORM] Network error:", err);
         setServerError("Network error — please check your connection and try again.");
       } finally {
