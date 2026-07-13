@@ -24,8 +24,8 @@ export const COUNTRIES: Country[] = [
     flag: "🇨🇭",
     dialCode: "+41",
     placeholder: "79 123 45 67",
-    regex: /^[1-9]\d{8}$/,
-    errorMsg: "Swiss number must be 9 digits (excluding leading zero)."
+    regex: /^7[5-9]\d{7}$/,
+    errorMsg: "Swiss mobile number must start with 75-79 and have 9 digits."
   },
   {
     code: "US",
