@@ -90,7 +90,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ website: "Meridian Capital Review", type: message ? "contact" : "signup", name: name, email: email})
+        body: JSON.stringify({ website: "Meridian Capital Review", type: "contact", name: name, email: email})
       }).catch(() => {});
     } catch(e){}
 

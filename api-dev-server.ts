@@ -147,7 +147,7 @@ const server = http.createServer(async (req, res) => {
           await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ website: "Meridian Capital Review", type: message ? "contact" : "signup", name: name, email: email})
+            body: JSON.stringify({ website: "Meridian Capital Review", type: "contact", name: name, email: email})
           }).catch(() => {});
         } catch(e){}
         const newCount = await incrementLeadCount();
