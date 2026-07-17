@@ -6,8 +6,8 @@ import http from "http";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { formatFullPhoneNumber } from "./api/_lib/phoneValidation.ts";
-import { incrementLeadCount, getLeadCount } from "./api/_lib/leadStorage.ts";
+import { formatFullPhoneNumber } from "./api/_lib/phoneValidation";
+import { incrementLeadCount, getLeadCount } from "./api/_lib/leadStorage";
 
 declare const fetch: any;
 

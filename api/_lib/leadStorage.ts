@@ -41,9 +41,10 @@ export async function incrementLeadCount(): Promise<number> {
 
   try {
     await put("lead-count.json", JSON.stringify({ count: newCount }), {
-      access: "private",       // matches your private Blob store
+      access: "public",
       addRandomSuffix: false,
       allowOverwrite: true,
+      cacheControlMaxAge: 0,
       token,
     });
     console.log(`[LEAD STORAGE] Count updated to ${newCount}`);
