@@ -242,7 +242,7 @@ export default function Enquiry() {
       } catch (err: any) {
       const rawMsg = (err?.message || err?.toString() || "");
       if (rawMsg.toLowerCase().includes("already exist") || rawMsg.toLowerCase().includes("already exists") || rawMsg.toLowerCase().includes("contacted")) {
-        toast.success("You have already contacted us. Please wait.");
+        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         setSubmitted(true);
         return;
       }
